@@ -27,6 +27,7 @@ export default {
   },
 
   mounted() {
+    // this.$on('validate', this.validate) 不直接这样写是因为 this.validate();返回的是Promise，如果有错误，会警告
     this.$on('validate', () => {
       this.validate();
     })

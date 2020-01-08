@@ -12,7 +12,12 @@ export default {
     value: {
       type: String,
       default: ''
-    }
+    },
+    //还可以改变model的部分属性，这样就可以用checked来传值，也可以改变事件名
+    //model: {
+      //prop: 'checked',
+      //event: 'change'
+    //}
   },
   methods: {
     onInput(e) {

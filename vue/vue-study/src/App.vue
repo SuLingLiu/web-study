@@ -1,25 +1,16 @@
 <template>
   <div id="app">
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <FormSample></FormSample>
-    <Tree></Tree>
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/form">form</router-link> |
+      <router-link to="/notice">notice</router-link> |
+      <router-link to="/tree">tree</router-link> 
+      
+      <!-- <router-view></router-view> -->
+    </div>
+    <router-view/>
   </div>
 </template>
-
-<script>
-// import HelloWorld from './components/HelloWorld.vue'
-import FormSample from './components/form/index.vue'
-import Tree from './components/tree/index.vue'
-
-export default {
-  name: 'app',
-  components: {
-    // HelloWorld,
-    FormSample,
-    Tree
-  }
-}
-</script>
 
 <style>
 #app {
@@ -28,6 +19,18 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>
