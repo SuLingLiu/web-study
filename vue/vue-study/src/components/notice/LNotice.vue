@@ -43,19 +43,19 @@ export default {
 <style scoped>
 .box {
   position: fixed;
-  width: 100%;
-  top: 16px;
-  left: 0;
+  width: 200px;
+  top: 200px;
+  left: 50%;
+  margin-left: -100px;
   text-align: center;
   pointer-events: none;
+  border: 1px solid #ddd;
+  text-align: center;
 }
 .box-content {
   width: 200px;
   margin: 10px auto;
   font-size: 14px;
-  border: blue 3px solid;
-  padding: 8px 16px;
-  background: #fff;
   border-radius: 3px;
   margin-bottom: 8px;
 }

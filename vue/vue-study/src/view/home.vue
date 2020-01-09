@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     首页
+    <router-view/>
   </div>
 </template>
 

@@ -3,7 +3,7 @@
 ### 组件通信
 #### 父组件=>子组件
 * 属性props
-``` js
+``` vue
 //child
 props: {msg: String}
 
@@ -49,7 +49,7 @@ inject: [foo]
 >
 >另外，反过来想要后代给祖先传值这种方案就不行了
 * dispatch：后代给祖先传值
-``` js
+``` vue
 //定义一个dispatch方法，指定要派发事件名称和数据
 function dispatch(eventName,data) {
     let parent = this.$parent;
@@ -110,7 +110,7 @@ this.$bus.$emit('foo')
 ## 插槽
 插槽语法是Vue实现的内容分发API，用于复合组件开发。该技术在通用组件库开发中有大量应用。
 ### 匿名插槽
-``` js
+``` vue
 //child
 <div>
     <slot></slot>
@@ -121,7 +121,7 @@ this.$bus.$emit('foo')
 ```
 ### 具名插槽
 将内容分发到子组件指定位置
-``` js
+``` vue
 //child
 <div>
     <slot></slot>
@@ -139,7 +139,7 @@ this.$bus.$emit('foo')
 
 ### 作用域插槽
 分发内容要用到子组件中的数据
-``` js
+``` vue
 //child
 <div>
     <slot :foo="foo"></slot>
@@ -156,7 +156,7 @@ this.$bus.$emit('foo')
 
 ## 递归组件
 递归组件是可以在它们组件模板中调用自身的组件。不是很常用
-``` js
+``` vue
 //Node
 <template>
   <div>
@@ -181,4 +181,80 @@ export default {
 //使用
 <Node :data="{id: '1', title:'递归组件', children:[{……}]}"></Node>
 ```
+## 组件双向数据绑定
+1. v-model，用起来比.asyn好用，不过.asyn可以修改名字
+``` vue
+/ 父组件
+<parent v-model="cart"></parent>
 
+//子组件
+props: {
+	value: {
+      type: String,
+      default: ''
+    },
+    //还可以改变model的部分属性
+	//model: {
+		//prop: 'checked',
+		//event: 'change'
+	//}
+},
+methods:{
+    add:function(){
+        this.$emit('input', e.target.value)
+    }
+}
+
+```
+2. 组件中的.sync修饰符
+``` vue
+// 父组件
+<parent :foo.sync="cart"></parent>
+
+//子组件
+props: ['foo'],
+
+methods:{
+    add:function(){
+        this.$emit('update:foo', e.target.value);
+    }
+}
+```
+
+## 组件化实战
+**实现Form、FormItem、Input**
+**组件设置
+> Form 理数据模型-model、校验规则-rules、全局校验方法-valiate
+> > FormItem 显示标签-label、执行校验-prop和显示校验结果
+> >
+> > > Input 绑定数据模型-v-model、通知FormItem执行校验
+>
+> 注：需要考虑的几个问题？
+> 
+> 1. Input是自定义组件，它是怎么实现数据绑定的？
+> 2. FormItem怎么知道何时执行校验，校验的数据和规则怎么得到？
+> 3. Form怎么进行全局校验？它用什么办法把数据模型和校验规则传递给内部组件？
+
+### 表单组件实现
+* Input
+	* 	双向绑定:@input、:value。v-model是语法糖，实现自定义组件双绑定需要指定:value和@input即可
+	* 	派发校验事件
+* 实现FormItem
+	* 给Input预留插槽-slot
+	* 能够展示label和校验信息
+	* 能够进行校验
+> 案例：'components/form/index.vue'
+### 实现弹窗组件
+弹窗这类组件的特点是它们在当前vue实例之外独立存在，通常挂载于body，它们是通过js动态创建的，不需要在任何组件中声明。常见使用姿势：
+``` js
+this.$create(Notice, {
+	title: '标题',
+	message: '提示信息',
+	duration: 1000
+}).show();
+```
+> 案例：'components/form/index.vue'
+### 实现Tree组件
+Tree 组件是典型的递归组件，其他的诸如菜单组件都是属于这一类
+
+> 案例：'components/tree/index.vue'
