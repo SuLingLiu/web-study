@@ -4,7 +4,8 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/form">form</router-link> |
       <router-link to="/notice">notice</router-link> |
-      <router-link to="/tree">tree</router-link> 
+      <router-link to="/tree">tree</router-link> |
+      <router-link to="/vuex">vuex</router-link> 
       
       <!-- <router-view></router-view> -->
     </div>

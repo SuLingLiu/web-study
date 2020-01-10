@@ -53,6 +53,11 @@ const routes = [
     name: 'notice',
     component: () => import(/* webpackChunkName: "tree" */ '../components/notice/index.vue')
   },
+  {
+    path: '/vuex',
+    name: 'vuex',
+    component: () => import(/* webpackChunkName: "tree" */ '../components/vuex/index.vue')
+  },
 ]
 
 //如果用history，则服务器要做页面设置，不然刷新会404

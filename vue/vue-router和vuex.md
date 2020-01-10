@@ -121,5 +121,15 @@ watch: {
 
 ## Vuex数据管理
 ### 安装：vue add vuex
-
+### 核心概念
+* state转态、数据
+* mutations更改转态函数
+* actions异步操作
+* store包含以上概念的容器
+> 例子：components/vuex/index.vue和store
 ## 理解vuex实现原理
+* vuex也是一个插件
+* 实现三个东西：state/mutations/actions/getters
+* 创建Store
+* 数据响应式
+* 
