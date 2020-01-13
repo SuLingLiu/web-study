@@ -132,4 +132,4 @@ watch: {
 * 实现三个东西：state/mutations/actions/getters
 * 创建Store
 * 数据响应式
-* 
+> 例子：lvuex.js  lstore.js
