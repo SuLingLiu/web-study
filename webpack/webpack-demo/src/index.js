@@ -1,7 +1,9 @@
+// import "@babel/polyfill"; //所有新特性都支持，如果是这样打包出来就很大
 import logo from './logo.jpg'
 import "./index.less"
 import axios from 'axios'
 import number from './number'
+
 axios.get('/api/info').then(res => {
 	console.log(res)
 })
@@ -26,6 +28,9 @@ btn.onclick = function() {
 }
 
 document.write('hello webpack')
+
+
+new Promise(() => {})
 
 number();
 if(module.hot) {
