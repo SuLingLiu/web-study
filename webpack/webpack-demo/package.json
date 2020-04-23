@@ -10,9 +10,11 @@
     "serve": "webpack-dev-server",
     "server": "node server.js",
     "dev": "webpack-dev-server --config ./webpack.dev.js",
-    "build": "webpack --config ./webpack.pre.js"
+    "build": "webpack --config ./webpack.pre.js",
+    "base_dev": "webpack --env.production --config ./webpack.base.js"
   },
   "keywords": [],
+  "sideEffects": ["*.css"],
   "author": "",
   "license": "ISC",
   "devDependencies": {

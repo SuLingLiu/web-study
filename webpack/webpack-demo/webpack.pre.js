@@ -12,20 +12,7 @@ const preConfig = {
   devtool: 'none',
   module: {//loader模块处理
     rules: [
-      {
-        test: /\.(png|jpe?g|gif)$/,
-        use: [
-          {
-            // loader: 'file-loader',
-            loader: 'url-loader',
-            options: {
-              name: "[name].[ext]",//ext后缀
-              outputPath: "images/",
-              limit: 20480//小于这个值会被转换成base64
-            }
-          }
-        ]
-      },
+      
       {
         test: /\.less$/,
         //数组里执行的顺序是从上到下，从右到左,"style-loader", "css-loader", "less-loader"
@@ -40,11 +27,11 @@ const preConfig = {
           }
         }]
       },
-      {
-        test: /\.js$/,
-        use: ["babel-loader"]
-      }
+      
     ]
+  },
+  optimization: {//摇树
+    usedExports: true
   },
   plugins: [
     new MiniCssExtractPlugin({
@@ -53,4 +40,5 @@ const preConfig = {
   ]
   
 }
-module.exports = merge(baseConfig, preConfig)
+
+module.exports = merge(baseConfig, preConfig)   
