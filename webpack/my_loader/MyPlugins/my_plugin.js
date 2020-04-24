@@ -6,6 +6,11 @@ class MyPlugin {
     }   
 
     apply(compiler) {
+        //同步钩子，同步的没回调，异步有回调
+        compiler.hooks.compile.tap("MyPlugin",compilation => {
+            console.log("我是同步的")
+        })
+
         //在输出目录放入一个.txt的文件，异步的钩子
         //hooks.emit 定义在某个时刻
         compiler.hooks.emit.tapAsync(
