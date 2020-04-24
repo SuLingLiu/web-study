@@ -36,7 +36,7 @@ const entry = (entryFile) => {
     }
 }
 
-const info = entry("./src/index.js")
+// const info = entry("./src/index.js")
 
 
 
